@@ -3,13 +3,17 @@ const Day = require('../models/day.js');
 
 
 router.get('/', (req,res,next) =>{
-	Day.findAll({include: [{all:true}]})
+	Day.findAll({
+		order: [  'number' ],
+		include: [{all:true}]})
 		.then( result => res.json(result))
 });
 
 router.post('/', (req,res,next)=>{
 const body = req.body;
+
 Day.create(body).then(day => res.json(day));
+
 });
 
 router.post('/:id/:type/:typeId', (req,res,next)=>{

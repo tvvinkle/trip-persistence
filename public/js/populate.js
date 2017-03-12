@@ -1,4 +1,4 @@
-var hotels=[] , restaurants=[], activities=[], days=[];
+var hotels=[] , restaurants=[], activities=[];
 
  // make all the option tags (second arg of `forEach` is a `this` binding)
 
