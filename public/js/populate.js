@@ -1,12 +1,12 @@
-var hotels=[] , restaurants=[], activities=[];
+var hotels=[] , restaurants=[], activities=[], days=[];
 
  // make all the option tags (second arg of `forEach` is a `this` binding)
 
     // Once you've made AJAX calls to retrieve this information,
     // call attractions.loadEnhancedAttractions in the fashion
     // exampled below in order to integrate it.
-   
-   
+
+
 $.get('/api/restaurants')
 .then(function (_restaurants) {
  

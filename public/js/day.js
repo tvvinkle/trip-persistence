@@ -31,6 +31,7 @@ var dayModule = (function () {
     this.hotel = null;
     this.restaurants = [];
     this.activities = [];
+    
     // for days based on existing data
     utilsModule.merge(data, this);
     if (this.hotel) this.hotel = attractionsModule.getEnhanced(this.hotel);

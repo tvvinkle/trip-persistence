@@ -19,13 +19,13 @@ router.post('/:id/:type/:typeId', (req,res,next)=>{
 	const funcName = 'add' + type;
 //	console.log(funcName);
 
-	Day.findOne({where:{ id}})
+	Day.findOne({where:{ id }})
 		.then((result) => result['add' + type](typeId))
 		.then(()=>Day.findById(id, {include:[{all:true}]}))
 		.then(result => res.json(result)).catch(next);
 });
 
-router.delete('/:id/:type/:typeId', (req, res, next)=> {
+router.delete('/:id/:type/:typeId', (req,res,next)=>{
 	const id = req.params.id;
 	const typeId = req.params.typeId;
 	const type = req.params.type;

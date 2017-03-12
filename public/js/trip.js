@@ -70,12 +70,26 @@ var tripModule = (function () {
     previousDay.hideButton();
   }
 
+  function loadDays(_days){
+    days = _days;
+    currentDay = days[0];
+    switchTo(currentDay);
+  }
+
   // globally accessible module methods
 
   var publicAPI = {
 
     load: function () {
-      $(addDay);
+
+      $.get('/api/days')
+  .then(function(_days){
+    _days =_days.map(dayModule.create);
+    tripModule.loadDays(_days);
+    if(days.length<1){
+          $(addDay);
+        }
+  })
     },
 
     switchTo: switchTo,
@@ -86,6 +100,10 @@ var tripModule = (function () {
 
     removeFromCurrent: function (attraction) {
       currentDay.removeAttraction(attraction);
+    },
+    loadDays,
+    getDays(){
+      return days;
     }
 
   };
