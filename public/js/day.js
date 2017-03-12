@@ -114,6 +114,8 @@ var dayModule = (function () {
 
   Day.prototype.removeAttraction = function (attraction) {
     // removing from the day object
+
+    $.ajax(`/api/days/${tripModule.getCurrentDayId()}/${attraction.type.charAt(0).toUpperCase() + attraction.type.slice(1)}/${attraction.id}`, {method:'DELETE'}).then(()=>{
     switch (attraction.type) {
       case 'hotel':
         this.hotel = null;
@@ -128,6 +130,7 @@ var dayModule = (function () {
     }
     // deactivating UI
     attraction.hide();
+  });
   };
 
   // globally accessible module methods

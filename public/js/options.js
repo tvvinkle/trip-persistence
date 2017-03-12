@@ -40,11 +40,19 @@ $(function () {
     $optionsPanel.on('click', 'button[data-action="add"]', function () {
         var $select = $(this).siblings('select');
         var type = $select.data('type'); // from HTML data-type attribute
+
+        var urlType = type.charAt(0).toUpperCase()+ type.slice(1);
         var id = $select.find(':selected').val();
         
         var attraction = attractionsModule.getByTypeAndId(type, id);
 
-        tripModule.addToCurrent(attraction);
+        // tripModule.addToCurrent(attraction);
+
+
+        $.post('/api/days/' + tripModule.getCurrentDayId() + '/' + urlType +'/' + id ).then(() =>{
+            console.log(urlType,id)
+              tripModule.addToCurrent(attraction);
+          });
     });
 
 });
